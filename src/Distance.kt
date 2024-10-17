@@ -1,11 +1,11 @@
 fun convertDistance() {
-    while (true) {
-        print("Введи расстояние в киломметрах: ")
-        val readDistance = readln().toDoubleOrNull() ?: continue
-        val millage = readDistance * 0.62
-        val feet = readDistance * 3280.84
-        println("Расстояние в милях: $millage")
-        println("Расстояние в футах: $feet")
-        break
-    }
+    val putDataDistance = PutDataDistance()
+    putDataDistance.distanceName()
+    val putDistanceName = putDataDistance.inputDistanceName()
+    val putDistanceValue = putDataDistance.inputDistanceValue(putDistanceName)
+    val outputDistanceValue = putDataDistance.outputDistanceName()
+
+    println("Полученное значение длины: ${putDataDistance.distanceConversion(putDistanceName, putDistanceValue, outputDistanceValue)}")
+
+
 }

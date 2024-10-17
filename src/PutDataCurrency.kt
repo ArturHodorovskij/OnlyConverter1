@@ -53,7 +53,7 @@ class PutDataCurrency {
         }
     }
 
-    fun outputCurrency(): Int {
+    fun outputCurrencyName(): Int {
         while (true) {
             print("Выберет валюту на которую хотите обменять: ")
             val outputC = readln().toIntOrNull() ?: continue
