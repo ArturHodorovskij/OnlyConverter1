@@ -24,6 +24,5 @@ class ExchangeRate {
     var rubtousd = 0.010
     var rubtopln = 0.041
     var rubtorub = 1
-
 }
 

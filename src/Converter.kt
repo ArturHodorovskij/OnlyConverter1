@@ -1,4 +1,3 @@
-
 fun main() {
     while (true) {
         println("1 - Конвертер валют")

@@ -53,7 +53,6 @@ class PutDataDistance {
     }
 
     fun distanceConversion(inputDistanceName: Int, inputDistanceValue: Double, outputDistanceName: Int): Double {
-
         val distanceData = DataDistance()
         val resultDistanceConversion: Double = when {
             inputDistanceName == 1 && outputDistanceName == 1 -> inputDistanceValue
