@@ -1,4 +1,3 @@
-
 fun converterTemperature() {
     val putDataTemp = PutDataTemp()
     putDataTemp.tempName()
@@ -7,3 +6,4 @@ fun converterTemperature() {
     val outputTempValue = putDataTemp.outputTempName()
     println("Полученное значение температуры: ${putDataTemp.tempConversion(putTempName, putTempValue, outputTempValue)}")
 }
+
