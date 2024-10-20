@@ -1,3 +1,5 @@
+package temperature
+
 open class PutDataTemp {
 
     fun tempName() {

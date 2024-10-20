@@ -1,3 +1,5 @@
+package temperature
+
 class DataTemp(inputTempValue: Double) {
     val degrtodegr = inputTempValue
     val degrtokalv = (inputTempValue + 273.15)

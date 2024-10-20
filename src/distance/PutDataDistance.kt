@@ -1,3 +1,5 @@
+package distance
+
 class PutDataDistance {
     fun distanceName() {
         println("1 -Мили")
@@ -53,7 +55,7 @@ class PutDataDistance {
     }
 
     fun distanceConversion(inputDistanceName: Int, inputDistanceValue: Double, outputDistanceName: Int): Double {
-        val distanceData = DataDistance()
+        val distanceData = DataDistance
         val resultDistanceConversion: Double = when {
             inputDistanceName == 1 && outputDistanceName == 1 -> inputDistanceValue
             inputDistanceName == 1 && outputDistanceName == 2 -> inputDistanceValue * distanceData.mltoklm

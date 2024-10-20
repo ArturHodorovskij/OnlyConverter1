@@ -1,4 +1,6 @@
-class DataDistance {
+package distance
+
+object DataDistance {
     val mltoklm = 1.6
     val mltoml = 1
     val mltofeet = 5280

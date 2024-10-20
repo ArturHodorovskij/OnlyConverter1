@@ -1,4 +1,6 @@
-class ExchangeRate {
+package currency
+
+object ExchangeRate {
     val blrtousd = 0.31
     val blrtoeur = 0.28
     val blrtopln = 1.2
