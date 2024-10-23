@@ -2,36 +2,40 @@ package distance
 
 class PutDataDistance {
     fun distanceName() {
-        println("1 -Мили")
-        println("2 -Киллометры")
-        println("3 -Футы")
-
+        println("1 -ml")
+        println("2 -km")
+        println("3 -ft")
     }
 
-    fun inputDistanceName(): Int {
+    fun inputDistanceName(): String {
         while (true) {
-            print("Выберет меру длины котрую хотите конвертировать : ")
-            val inputDistanceName = readln().toIntOrNull() ?: continue
-            if (inputDistanceName in 1..3) {
-                return inputDistanceName
-            } else continue
+            print("Введите название исходной величины длины: ")
+            return when (val inputDistanceName = readln()) {
+                "ml" -> inputDistanceName
+                "km" -> inputDistanceName
+                "ft" -> inputDistanceName
+                else -> {
+                    println("Попробуйте снова")
+                    continue
+                }
+            }
         }
     }
 
-    fun inputDistanceValue(inputDistanceName: Int): Double {
+    fun inputDistanceValue(inputDistanceName: String): Double {
         while (true) {
             when (inputDistanceName) {
-                1 -> {
+                "ml" -> {
                     print("Введите длину  в милях: ")
                     return readln().toDoubleOrNull() ?: continue
                 }
 
-                2 -> {
+                "km" -> {
                     print("Введите длину в киллометрах: ")
                     return readln().toDoubleOrNull() ?: continue
                 }
 
-                3 -> {
+                "ft" -> {
                     print("Введите длину в футах: ")
                     return readln().toDoubleOrNull() ?: continue
                 }
@@ -44,28 +48,33 @@ class PutDataDistance {
         }
     }
 
-    fun outputDistanceName(): Int {
+    fun outputDistanceName(): String {
         while (true) {
-            print("Выберет меру длины на котрую хотите конвертировать: ")
-            val outputDistanceName = readln().toIntOrNull() ?: continue
-            if (outputDistanceName in 1..3) {
-                return outputDistanceName
-            } else continue
+            print("Введите название конечной величины длины: ")
+            return when (val outputDistanceName = readln()) {
+                "ml" -> outputDistanceName
+                "km" -> outputDistanceName
+                "ft" -> outputDistanceName
+                else -> {
+                    println("Попробуйте снова")
+                    continue
+                }
+            }
         }
     }
 
-    fun distanceConversion(inputDistanceName: Int, inputDistanceValue: Double, outputDistanceName: Int): Double {
+    fun distanceConversion(inputDistanceName: String, inputDistanceValue: Double, outputDistanceName: String): Double {
         val distanceData = DataDistance
         val resultDistanceConversion: Double = when {
-            inputDistanceName == 1 && outputDistanceName == 1 -> inputDistanceValue
-            inputDistanceName == 1 && outputDistanceName == 2 -> inputDistanceValue * distanceData.mltoklm
-            inputDistanceName == 1 && outputDistanceName == 3 -> inputDistanceValue * distanceData.mltofeet
-            inputDistanceName == 2 && outputDistanceName == 1 -> inputDistanceValue * distanceData.klmtoml
-            inputDistanceName == 2 && outputDistanceName == 2 -> inputDistanceValue
-            inputDistanceName == 2 && outputDistanceName == 3 -> inputDistanceValue * distanceData.klmtofeet
-            inputDistanceName == 3 && outputDistanceName == 1 -> inputDistanceValue * distanceData.feettoml
-            inputDistanceName == 3 && outputDistanceName == 2 -> inputDistanceValue * distanceData.feettoklm
-            inputDistanceName == 3 && outputDistanceName == 3 -> inputDistanceValue
+            inputDistanceName == "ml" && outputDistanceName == "ml" -> inputDistanceValue
+            inputDistanceName == "ml" && outputDistanceName == "km" -> inputDistanceValue * distanceData.mltoklm
+            inputDistanceName == "ml" && outputDistanceName == "ft" -> inputDistanceValue * distanceData.mltofeet
+            inputDistanceName == "km" && outputDistanceName == "ml" -> inputDistanceValue * distanceData.klmtoml
+            inputDistanceName == "km" && outputDistanceName == "km" -> inputDistanceValue
+            inputDistanceName == "km" && outputDistanceName == "ft" -> inputDistanceValue * distanceData.klmtofeet
+            inputDistanceName == "ft" && outputDistanceName == "ml" -> inputDistanceValue * distanceData.feettoml
+            inputDistanceName == "ft" && outputDistanceName == "km" -> inputDistanceValue * distanceData.feettoklm
+            inputDistanceName == "ft" && outputDistanceName == "ft" -> inputDistanceValue
             else -> {
                 0.0
             }
@@ -73,4 +82,9 @@ class PutDataDistance {
         return resultDistanceConversion
     }
 }
+
+
+
+
+
 

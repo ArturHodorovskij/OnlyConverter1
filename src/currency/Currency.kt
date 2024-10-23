@@ -7,10 +7,10 @@ class Currency {
         putDataCurrency.currencyName()
         val inputCurrencyName = putDataCurrency.inputCurrencyName()
         val inputSum = putDataCurrency.inputSum(inputCurrencyName)
-        val outputCurrency = putDataCurrency.outputCurrencyName()
-        val exchang = putDataCurrency.exchanger(inputCurrencyName, inputSum, outputCurrency)
-        println("Ваша сумма $exchang")
-        val logEntry = "$inputSum $inputCurrencyName  -> $exchang $outputCurrency"
+        val outputCurrencyName = putDataCurrency.outputCurrencyName()
+        val resultExchange = putDataCurrency.exchanger(inputCurrencyName, inputSum, outputCurrencyName)
+        println("Ваша сумма $resultExchange")
+        val logEntry = "$inputSum $inputCurrencyName  -> $resultExchange $outputCurrencyName\n"
         File("History").appendText(logEntry)
     }
 }

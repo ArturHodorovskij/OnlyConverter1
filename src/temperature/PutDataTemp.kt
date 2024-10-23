@@ -3,36 +3,40 @@ package temperature
 open class PutDataTemp {
 
     fun tempName() {
-        println("1 -Градусы Цельсия")
-        println("2 -Кельвины")
-        println("3 -Фаренгейты")
-
+        println("1 -C")
+        println("2 -K")
+        println("3 -F")
     }
 
-    fun inputTempName(): Int {
+    fun inputTempName(): String {
         while (true) {
-            print("Выберет единицу температуры которую хотите конвертировать : ")
-            val inputTempName = readln().toIntOrNull() ?: continue
-            if (inputTempName in 1..3) {
-                return inputTempName
-            } else continue
+            print("Введите название исходной температуры: ")
+            return when (val inputTempName = readln()) {
+                "C" -> inputTempName
+                "K" -> inputTempName
+                "F" -> inputTempName
+                else -> {
+                    println("Попробуйте снова")
+                    continue
+                }
+            }
         }
     }
 
-    fun inputTempValue(putTempName: Int): Double {
+    fun inputTempValue(inputTempName: String): Double {
         while (true) {
-            when (putTempName) {
-                1 -> {
+            when (inputTempName) {
+                "C" -> {
                     print("Введите температуру в Градусах Цельсия: ")
                     return readln().toDoubleOrNull() ?: continue
                 }
 
-                2 -> {
+                "K" -> {
                     print("Введите температуру в Кельвинах: ")
                     return readln().toDoubleOrNull() ?: continue
                 }
 
-                3 -> {
+                "F" -> {
                     print("Введите температуру в Фаренгейтах: ")
                     return readln().toDoubleOrNull() ?: continue
                 }
@@ -45,28 +49,33 @@ open class PutDataTemp {
         }
     }
 
-    fun outputTempName(): Int {
+    fun outputTempName(): String {
         while (true) {
-            print("Выберет единицу температуры в которую хотите конвертировать: ")
-            val outputTempName = readln().toIntOrNull() ?: continue
-            if (outputTempName in 1..3) {
-                return outputTempName
-            } else continue
+            print("Введите название конечной температуры: ")
+            return when (val outputTempName = readln()) {
+                "C" -> outputTempName
+                "K" -> outputTempName
+                "F" -> outputTempName
+                else -> {
+                    println("Попробуйте снова")
+                    continue
+                }
+            }
         }
     }
 
-    fun tempConversion(inputTempName: Int, inputTempValue: Double, outputTempName: Int): Double {
+    fun tempConversion(inputTempName: String, inputTempValue: Double, outputTempName: String): Double {
         val tempData = DataTemp(inputTempValue)
         val resultTempConversion: Double = when {
-            inputTempName == 1 && outputTempName == 1 -> inputTempValue
-            inputTempName == 1 && outputTempName == 2 -> tempData.degrtokalv
-            inputTempName == 1 && outputTempName == 3 -> tempData.degrtofar
-            inputTempName == 2 && outputTempName == 1 -> tempData.kalvtodegr
-            inputTempName == 2 && outputTempName == 2 -> inputTempValue
-            inputTempName == 2 && outputTempName == 3 -> tempData.kalvtofar
-            inputTempName == 3 && outputTempName == 1 -> tempData.fartodegr
-            inputTempName == 3 && outputTempName == 2 -> tempData.fartokalv
-            inputTempName == 3 && outputTempName == 3 -> inputTempValue
+            inputTempName == "C" && outputTempName == "C" -> inputTempValue
+            inputTempName == "C" && outputTempName == "K" -> tempData.degrtokalv
+            inputTempName == "C" && outputTempName == "F" -> tempData.degrtofar
+            inputTempName == "K" && outputTempName == "C" -> tempData.kalvtodegr
+            inputTempName == "K" && outputTempName == "K" -> inputTempValue
+            inputTempName == "K" && outputTempName == "F" -> tempData.kalvtofar
+            inputTempName == "F" && outputTempName == "C" -> tempData.fartodegr
+            inputTempName == "F" && outputTempName == "K" -> tempData.fartokalv
+            inputTempName == "F" && outputTempName == "F" -> inputTempValue
             else -> {
                 0.0
             }

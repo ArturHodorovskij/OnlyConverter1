@@ -12,12 +12,12 @@ class PutDataCurrency {
     fun inputCurrencyName(): String {
         while (true) {
             print("Введите название валюты:  ")
-            return when (val inputCurN = readln()) {
-                "BLR" -> inputCurN
-                "EUR" -> inputCurN
-                "USD" -> inputCurN
-                "PLN" -> inputCurN
-                "RUB" -> inputCurN
+            return when (val inputCurrencyName = readln()) {
+                "BLR" -> inputCurrencyName
+                "EUR" -> inputCurrencyName
+                "USD" -> inputCurrencyName
+                "PLN" -> inputCurrencyName
+                "RUB" -> inputCurrencyName
                 else -> {
                     println("Попробуйте снова")
                     continue
@@ -26,9 +26,9 @@ class PutDataCurrency {
         }
     }
 
-    fun inputSum(inputCurN: String): Double {
+    fun inputSum(inputCurrencyName: String): Double {
         while (true) {
-            when (inputCurN) {
+            when (inputCurrencyName) {
                 "BLR" -> {
                     print("Введите сумму  BLR: ")
                     return readln().toDoubleOrNull() ?: continue
@@ -65,12 +65,12 @@ class PutDataCurrency {
     fun outputCurrencyName(): String {
         while (true) {
             print("Выберете название валюты на которую хотите обменять: ")
-            return when (val outputC = readln()) {
-                "BLR" -> outputC
-                "EUR" -> outputC
-                "USD" -> outputC
-                "PLN" -> outputC
-                "RUB" -> outputC
+            return when (val outputCurrencyName = readln()) {
+                "BLR" -> outputCurrencyName
+                "EUR" -> outputCurrencyName
+                "USD" -> outputCurrencyName
+                "PLN" -> outputCurrencyName
+                "RUB" -> outputCurrencyName
                 else -> {
                     println("Попробуйте снова")
                     continue
