@@ -9,40 +9,47 @@ class PutDataCurrency {
         println("5 -RUB")
     }
 
-    fun inputCurrencyName(): Int {
+    fun inputCurrencyName(): String {
         while (true) {
-            print("Выберет валюту которую хотите обменять: ")
-            val inputCurN = readln().toIntOrNull() ?: continue
-            if (inputCurN in 1..5) {
-                return inputCurN
-            } else continue
+            print("Введите название валюты:  ")
+            return when (val inputCurN = readln()) {
+                "BLR" -> inputCurN
+                "EUR" -> inputCurN
+                "USD" -> inputCurN
+                "PLN" -> inputCurN
+                "RUB" -> inputCurN
+                else -> {
+                    println("Попробуйте снова")
+                    continue
+                }
+            }
         }
     }
 
-    fun inputSum(inputCurN: Int): Double {
+    fun inputSum(inputCurN: String): Double {
         while (true) {
             when (inputCurN) {
-                1 -> {
+                "BLR" -> {
                     print("Введите сумму  BLR: ")
                     return readln().toDoubleOrNull() ?: continue
                 }
 
-                2 -> {
+                "EUR" -> {
                     print("Введите сумму  EUR: ")
                     return readln().toDoubleOrNull() ?: continue
                 }
 
-                3 -> {
+                "USD" -> {
                     print("Введите сумму  USD: ")
                     return readln().toDoubleOrNull() ?: continue
                 }
 
-                4 -> {
+                "PLN" -> {
                     print("Введите сумму  PLN: ")
                     return readln().toDoubleOrNull() ?: continue
                 }
 
-                5 -> {
+                "RUB" -> {
                     print("Введите сумму  RUB: ")
                     return readln().toDoubleOrNull() ?: continue
                 }
@@ -55,44 +62,51 @@ class PutDataCurrency {
         }
     }
 
-    fun outputCurrencyName(): Int {
+    fun outputCurrencyName(): String {
         while (true) {
-            print("Выберет валюту на которую хотите обменять: ")
-            val outputC = readln().toIntOrNull() ?: continue
-            if (outputC in 1..5) {
-                return outputC
-            } else continue
+            print("Выберете название валюты на которую хотите обменять: ")
+            return when (val outputC = readln()) {
+                "BLR" -> outputC
+                "EUR" -> outputC
+                "USD" -> outputC
+                "PLN" -> outputC
+                "RUB" -> outputC
+                else -> {
+                    println("Попробуйте снова")
+                    continue
+                }
+            }
         }
     }
 
-    fun exchanger(inputCurrencyName: Int, inputSum: Double, outputCurrencyName: Int): Double {
+    fun exchanger(inputCurrencyName: String, inputSum: Double, outputCurrencyName: String): Double {
         val rate = ExchangeRate
         val resultExchange: Double = when {
-            inputCurrencyName == 1 && outputCurrencyName == 1 -> inputSum
-            inputCurrencyName == 1 && outputCurrencyName == 2 -> inputSum * rate.blrtoeur
-            inputCurrencyName == 1 && outputCurrencyName == 3 -> inputSum * rate.blrtousd
-            inputCurrencyName == 1 && outputCurrencyName == 4 -> inputSum * rate.blrtopln
-            inputCurrencyName == 1 && outputCurrencyName == 5 -> inputSum * rate.blrtorub
-            inputCurrencyName == 2 && outputCurrencyName == 1 -> inputSum * rate.eurtoblr
-            inputCurrencyName == 2 && outputCurrencyName == 2 -> inputSum
-            inputCurrencyName == 2 && outputCurrencyName == 3 -> inputSum * rate.eurtousd
-            inputCurrencyName == 2 && outputCurrencyName == 4 -> inputSum * rate.eurtopln
-            inputCurrencyName == 2 && outputCurrencyName == 5 -> inputSum * rate.eurtorub
-            inputCurrencyName == 3 && outputCurrencyName == 1 -> inputSum * rate.usdtoblr
-            inputCurrencyName == 3 && outputCurrencyName == 2 -> inputSum * rate.usdtoeur
-            inputCurrencyName == 3 && outputCurrencyName == 3 -> inputSum
-            inputCurrencyName == 3 && outputCurrencyName == 4 -> inputSum * rate.usdtopln
-            inputCurrencyName == 3 && outputCurrencyName == 5 -> inputSum * rate.usdtorub
-            inputCurrencyName == 4 && outputCurrencyName == 1 -> inputSum * rate.plntoblr
-            inputCurrencyName == 4 && outputCurrencyName == 2 -> inputSum * rate.plntoeur
-            inputCurrencyName == 4 && outputCurrencyName == 3 -> inputSum * rate.plntousd
-            inputCurrencyName == 4 && outputCurrencyName == 4 -> inputSum
-            inputCurrencyName == 4 && outputCurrencyName == 5 -> inputSum * rate.plntorub
-            inputCurrencyName == 5 && outputCurrencyName == 1 -> inputSum * rate.rubtoblr
-            inputCurrencyName == 5 && outputCurrencyName == 2 -> inputSum * rate.rubtoeur
-            inputCurrencyName == 5 && outputCurrencyName == 3 -> inputSum * rate.rubtousd
-            inputCurrencyName == 5 && outputCurrencyName == 4 -> inputSum * rate.rubtopln
-            inputCurrencyName == 5 && outputCurrencyName == 5 -> inputSum
+            inputCurrencyName == "BLR" && outputCurrencyName == "BLR" -> inputSum
+            inputCurrencyName == "BLR" && outputCurrencyName == "EUR" -> inputSum * rate.blrtoeur
+            inputCurrencyName == "BLR" && outputCurrencyName == "USD" -> inputSum * rate.blrtousd
+            inputCurrencyName == "BLR" && outputCurrencyName == "PLN" -> inputSum * rate.blrtopln
+            inputCurrencyName == "BLR" && outputCurrencyName == "RUB" -> inputSum * rate.blrtorub
+            inputCurrencyName == "EUR" && outputCurrencyName == "BLR" -> inputSum * rate.eurtoblr
+            inputCurrencyName == "EUR" && outputCurrencyName == "EUR" -> inputSum
+            inputCurrencyName == "EUR" && outputCurrencyName == "USD" -> inputSum * rate.eurtousd
+            inputCurrencyName == "EUR" && outputCurrencyName == "PLN" -> inputSum * rate.eurtopln
+            inputCurrencyName == "EUR" && outputCurrencyName == "RUB" -> inputSum * rate.eurtorub
+            inputCurrencyName == "USD" && outputCurrencyName == "BLR" -> inputSum * rate.usdtoblr
+            inputCurrencyName == "USD" && outputCurrencyName == "EUR" -> inputSum * rate.usdtoeur
+            inputCurrencyName == "USD" && outputCurrencyName == "USD" -> inputSum
+            inputCurrencyName == "USD" && outputCurrencyName == "PLN" -> inputSum * rate.usdtopln
+            inputCurrencyName == "USD" && outputCurrencyName == "RUB" -> inputSum * rate.usdtorub
+            inputCurrencyName == "PLN" && outputCurrencyName == "BLR" -> inputSum * rate.plntoblr
+            inputCurrencyName == "PLN" && outputCurrencyName == "EUR" -> inputSum * rate.plntoeur
+            inputCurrencyName == "PLN" && outputCurrencyName == "USD" -> inputSum * rate.plntousd
+            inputCurrencyName == "PLN" && outputCurrencyName == "PLN" -> inputSum
+            inputCurrencyName == "PLN" && outputCurrencyName == "RUB" -> inputSum * rate.plntorub
+            inputCurrencyName == "RUB" && outputCurrencyName == "BLR" -> inputSum * rate.rubtoblr
+            inputCurrencyName == "RUB" && outputCurrencyName == "EUR" -> inputSum * rate.rubtoeur
+            inputCurrencyName == "RUB" && outputCurrencyName == "USD" -> inputSum * rate.rubtousd
+            inputCurrencyName == "RUB" && outputCurrencyName == "PLN" -> inputSum * rate.rubtopln
+            inputCurrencyName == "RUB" && outputCurrencyName == "RUB" -> inputSum
             else -> {
                 0.0
             }
@@ -100,3 +114,6 @@ class PutDataCurrency {
         return resultExchange
     }
 }
+
+
+
